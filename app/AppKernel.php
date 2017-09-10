@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
+            new Dunglas\AngularCsrfBundle\DunglasAngularCsrfBundle(),
+
 
             new AppBundle\AppBundle(),
         ];

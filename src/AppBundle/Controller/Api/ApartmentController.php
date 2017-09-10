@@ -37,8 +37,10 @@ class ApartmentController extends FOSRestController
     /**
      * @Rest\Get("/api/apartment/{id}")
      */
-    public function getAction($id)
+    public function getAction(Request $request, $id)
     {
+//        return $request->cookies;
+
         $singleresult = $this->getDoctrine()->getRepository('AppBundle:Apartment')->find($id);
         if ($singleresult === null) {
             return new View("user not found", Response::HTTP_NOT_FOUND);
@@ -52,13 +54,14 @@ class ApartmentController extends FOSRestController
 
     public function postAction(Request $request)
     {
+
         $data = new Apartment();
         $email = $request->get('email');
         $street = $request->get('street');
         $town = $request->get('town');
         $country = $request->get('country');
         $postcode = $request->get('postcode');
-        $moveInDate = $request->get('moveInDate');
+        $moveInDate = $request->get('move_in_date');
 
         if(empty($country) || empty($email) || empty($town))
         {
@@ -69,7 +72,7 @@ class ApartmentController extends FOSRestController
         $data->setTown($town);
         $data->setCountry($country);
         $data->setPostcode($postcode);
-        $data->setMoveInDate($moveInDate);
+        $data->setMoveInDate(new \DateTime($moveInDate['year']."-".$moveInDate['month']."-".$moveInDate['day']));
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($data);
@@ -79,15 +82,22 @@ class ApartmentController extends FOSRestController
  }
 
     /**
-     * @Rest\Delete("/apartment/{id}")
+     * @Rest\Delete("/api/apartment/delete/{id}", name="apartment_delete")
+     *
      */
-    public function deleteAction($id)
+    public function deleteAction(Request $request, $id)
     {
-//        $data = new User;
+
+die("dsa");
+
+//        echo $request->get('Set_Cookie');
+//        die('dsa');
+//        exit;
+//        return new View($this->isCsrfTokenValid("sarvar.nishonboyev@gmail.com", $request->get('Set_Cookie')), Response::HTTP_NOT_FOUND);
         $sn = $this->getDoctrine()->getManager();
         $data = $this->getDoctrine()->getRepository('AppBundle:Apartment')->find($id);
         if (empty($data)) {
-            return new View("user not found", Response::HTTP_NOT_FOUND);
+            return new View("record is not found", Response::HTTP_NOT_FOUND);
         }
         else {
             $sn->remove($data);
@@ -95,6 +105,8 @@ class ApartmentController extends FOSRestController
         }
         return new View("deleted successfully", Response::HTTP_OK);
     }
+
+
 
     public function sendEmailAction($name, \Swift_Mailer $mailer)
     {
