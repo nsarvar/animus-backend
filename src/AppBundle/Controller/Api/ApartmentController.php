@@ -7,6 +7,7 @@
  */
 
 namespace AppBundle\Controller\Api;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 
 use AppBundle\Entity\Apartment;
@@ -22,7 +23,15 @@ use FOS\RestBundle\View\View;
 class ApartmentController extends FOSRestController
 {
     /**
+     * Get list of all the apartments
+     *
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Get list of all the apartments"
+     * )
+
      * @Rest\Get("/api/apartments")
+     *
      */
     public function getAllAction()
     {
@@ -52,8 +61,13 @@ class ApartmentController extends FOSRestController
     }
 
     /**
-    * @Rest\Post("/api/apartment")
-    */
+     * Create new apartment record
+     *
+     * @ApiDoc(
+     *  description="Create a new Object"
+     * )
+     * @Rest\Post("/api/apartment")
+     */
 
     public function postAction(Request $request)
     {
@@ -91,6 +105,12 @@ class ApartmentController extends FOSRestController
  }
 
     /**
+     * Delete a record
+     *
+     * @ApiDoc(
+     *  description="Delete a record"
+     * )
+     *
      * @Rest\Delete("/api/apartment/delete/{id}", name="apartment_delete")
      *
      */
