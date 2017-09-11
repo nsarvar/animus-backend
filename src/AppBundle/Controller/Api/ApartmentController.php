@@ -83,8 +83,10 @@ class ApartmentController extends FOSRestController
         $em->persist($data);
         $em->flush();
 
+        $this->sendEmail($email);
+
         return new View(
-            ["message"=>"Record is created!", "status"=> Response::HTTP_OK],
+            ["message"=>"Record is created and sent email!", "status"=> Response::HTTP_OK],
             Response::HTTP_OK);
  }
 
@@ -97,23 +99,25 @@ class ApartmentController extends FOSRestController
         $sn = $this->getDoctrine()->getManager();
         $data = $this->getDoctrine()->getRepository('AppBundle:Apartment')->find($id);
         if (empty($data)) {
-            return new View("record is not found", Response::HTTP_NOT_FOUND);
+            return new View(
+                ['message'=>"record is not found", 'status'=> Response::HTTP_NOT_FOUND],
+                    Response::HTTP_NOT_FOUND);
         }
         else {
             $sn->remove($data);
             $sn->flush();
         }
-        return new View("deleted successfully", Response::HTTP_OK);
+        return new View(
+            ['message'=>"Deleted successfully", 'status'=> Response::HTTP_NOT_FOUND], Response::HTTP_OK);
     }
 
-
-
-    public function sendEmailAction($name, \Swift_Mailer $mailer)
+    public function sendEmail($email, \Swift_Mailer $mailer)
     {
-        $message = (new \Swift_Message('Hello Email'))
-            ->setFrom('send@example.com')
-            ->setTo('recipient@example.com')
-            ->setBody('You should see me from the profiler!')
+        $message = (new \Swift_Message('Dear sir/madam,'))
+            ->setFrom('sarvar.nishonboyev')
+            ->setTo($email)
+            ->setBody('
+            !')
         ;
 
         $mailer->send($message);

@@ -17,21 +17,13 @@ security:
             anonymous: ~
             # activate different ways to authenticate
 
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
-
-            # https://symfony.com/doc/current/security/form_login_setup.html
-            #form_login: ~
-
 dunglas_angular_csrf:
     # Collection of patterns where to set the cookie
     cookie:
         set_on:
             - { path: ^/$ }
             - { route: ^app_, methods: [DELETE, GET, HEAD] }
-#            - { host: example.com }
     # Collection of patterns to secure
     secure:
         - { path: ^/api, methods: [DELETE, PUT, PATCH, LINK] }
         - { route: ^api_v2_ }
-#        - { host: example.com, methods: [DELETE, POST, PUT, PATCH, LINk] }
