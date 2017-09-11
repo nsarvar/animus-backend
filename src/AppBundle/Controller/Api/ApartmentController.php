@@ -28,7 +28,8 @@ class ApartmentController extends FOSRestController
     {
         $restresult = $this->getDoctrine()->getRepository('AppBundle:Apartment')->findAll();
         if ($restresult === null) {
-            return new View("there are no users exist", Response::HTTP_NOT_FOUND);
+            return new View(
+                ["message"=>"No record found"], Response::HTTP_NOT_FOUND);
         }
         return $restresult;
     }
@@ -43,7 +44,9 @@ class ApartmentController extends FOSRestController
 
         $singleresult = $this->getDoctrine()->getRepository('AppBundle:Apartment')->find($id);
         if ($singleresult === null) {
-            return new View("user not found", Response::HTTP_NOT_FOUND);
+            return new View(
+                ["message"=>"record not found", "status"=> Response::HTTP_NOT_FOUND],
+                Response::HTTP_NOT_FOUND);
         }
         return $singleresult;
     }
@@ -65,7 +68,9 @@ class ApartmentController extends FOSRestController
 
         if(empty($country) || empty($email) || empty($town))
         {
-            return new View("NULL VALUES ARE NOT ALLOWED", Response::HTTP_NOT_ACCEPTABLE);
+            return new View(
+                ["message"=>"Please, fill the required fields", "status"=> Response::HTTP_NOT_FOUND],
+                Response::HTTP_NOT_ACCEPTABLE);
         }
         $data->setEmail($email);
         $data->setStreet($street);
@@ -78,7 +83,9 @@ class ApartmentController extends FOSRestController
         $em->persist($data);
         $em->flush();
 
-        return new View("User Added Successfully", Response::HTTP_OK);
+        return new View(
+            ["message"=>"Record is created!", "status"=> Response::HTTP_OK],
+            Response::HTTP_OK);
  }
 
     /**
@@ -87,13 +94,6 @@ class ApartmentController extends FOSRestController
      */
     public function deleteAction(Request $request, $id)
     {
-
-die("dsa");
-
-//        echo $request->get('Set_Cookie');
-//        die('dsa');
-//        exit;
-//        return new View($this->isCsrfTokenValid("sarvar.nishonboyev@gmail.com", $request->get('Set_Cookie')), Response::HTTP_NOT_FOUND);
         $sn = $this->getDoctrine()->getManager();
         $data = $this->getDoctrine()->getRepository('AppBundle:Apartment')->find($id);
         if (empty($data)) {
@@ -117,7 +117,5 @@ die("dsa");
         ;
 
         $mailer->send($message);
-
-//        return $this->render();
     }
 }

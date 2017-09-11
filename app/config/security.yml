@@ -24,11 +24,8 @@ security:
             #form_login: ~
 
 dunglas_angular_csrf:
-    header:
-        name: X-XSRF-TOKEN
     # Collection of patterns where to set the cookie
     cookie:
-        name: XSRF-TOKEN
         set_on:
             - { path: ^/$ }
             - { route: ^app_, methods: [DELETE, GET, HEAD] }
