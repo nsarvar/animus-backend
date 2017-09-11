@@ -1,4 +1,7 @@
 animus-backend
 ==============
 
-A Symfony project created on September 8, 2017, 3:26 am.
+http://localhost:8000/apartments/web
+http://localhost:8000/apartments/api
+http://localhost:8000/apartments/api/doc
+
