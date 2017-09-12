@@ -11,6 +11,13 @@ This is a backend application which provides RestAPI to return list of Apartment
 - Doctrine Migration
 - RESTful API
 
+## Used third-party libraries
+- FOSRestBundle - a tool to help the job of creating a REST API with Symfony
+- NelmioCorsBundle - allows to send Cross-Origin Resource Sharing headers with ACL-style per-URL configuration.
+- DunglasAngularCsrfBundle - This API Platform and Symfony bundle provides Cross Site Request Forgery (CSRF or XSRF) protection for client-side applications using token generated on sever
+- NelmioApiDocBundle
+- DoctrineMigrationsBundle
+
 ## Installation
 This installation works under Linux OS (Tested on Ubuntu 17). 
 
