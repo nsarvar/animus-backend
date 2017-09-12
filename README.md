@@ -4,10 +4,13 @@ This is a backend application build on Symfony 3.1 PHP freamework. It provides R
 
 ## Requirements
 The following software are necessary to run the Installation and the app:
+- WebServer (Apache2, Ngix etc)
 - PHP 7
 - MySql
 - Composer
-- Symfony web framework
+- Symfony web framework requirement must be fullfilled as an app is built on Symfony. In order to to check the Symfony requiremnt, please copy the project to the localhost directory of the webserver and go to the following URL before installation to check whether the system meet the requirement: 
+http://localhost/animus--backend/web/config.php
+
 
 ## Installation
 This installation works under Linux OS (Tested on Ubuntu 17). 
