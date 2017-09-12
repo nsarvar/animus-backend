@@ -65,6 +65,14 @@ class Apartment
 
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
+     */
+    private $photo;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -216,5 +224,29 @@ class Apartment
     public function getPostcode()
     {
         return $this->postcode;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     *
+     * @return Apartment
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
     }
 }

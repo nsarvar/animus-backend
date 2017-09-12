@@ -63,12 +63,13 @@ class Apartment
      */
     private $postcode;
 
+
     /**
      * @var string
      *
-     * @ORM\Column(name="crf_token", type="string", length=255)
+     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
      */
-    private $crf_token;
+    private $photo;
 
 
     /**
@@ -225,4 +226,3 @@ class Apartment
         return $this->postcode;
     }
 }
-
