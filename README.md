@@ -9,10 +9,12 @@ The following software are necessary to run the Installation and the app:
 - MySql
 - Composer
 - Symfony web framework requirement must be fullfilled as an app is built on Symfony. In order to to check the Symfony requiremnt, please copy the project to the localhost directory of the webserver and go to the following URL before installation to check whether the system meet the requirement: 
-http://localhost/animus--backend/web/config.php
-
+http://localhost/animus-backend/web/config.php
+If the system met all the requirements, then go through the Installation process.
 
 ## Installation
+Installation process consist of the following steps:
+- 
 This installation works under Linux OS (Tested on Ubuntu 17). 
 
 Run install.sh shell file using `./install.shell` command. 
