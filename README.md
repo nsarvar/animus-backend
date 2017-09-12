@@ -13,11 +13,12 @@ http://localhost/animus-backend/web/config.php
 If the system met all the requirements, then go through the Installation process.
 
 ## Installation
-Installation process consist of the following steps:
-- 
-This installation works under Linux OS (Tested on Ubuntu 17). 
+Run `make` command to install the project. 
+It installs all the dependencies, set the necessary permission to the required directories and run the migration. 
 
-Run install.sh shell file using `./install.sh` command. 
+`./start` - run the project
+
+`./stop` - stop the running of the project
 
 After Installation, you can access to the main page using: http://localhost:8000
 
