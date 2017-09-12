@@ -67,7 +67,10 @@ swiftmailer:
     host: '%mailer_host%'
     username: '%mailer_user%'
     password: '%mailer_password%'
-    spool: { type: memory }
+#    spool: { type: memory }
+    spool:
+        type: file
+        path: /var/www/html/temp/spool
 
 # Nelmio CORS Configuration
 nelmio_cors:

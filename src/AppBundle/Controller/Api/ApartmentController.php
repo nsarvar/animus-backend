@@ -97,8 +97,6 @@ class ApartmentController extends FOSRestController
         $em->persist($data);
         $em->flush();
 
-        $this->sendEmail($email);
-
         return new View(
             ["message"=>"Record is created and sent email!", "status"=> Response::HTTP_OK],
             Response::HTTP_OK);
@@ -131,15 +129,33 @@ class ApartmentController extends FOSRestController
             ['message'=>"Deleted successfully", 'status'=> Response::HTTP_NOT_FOUND], Response::HTTP_OK);
     }
 
-    public function sendEmail($email, \Swift_Mailer $mailer)
+    /**
+     * Delete a record
+     *
+     * @ApiDoc(
+     *  description="Sending an email"
+     * )
+     *
+     * @Rest\Post("/api/send-email", name="sendEmail")
+     */
+    public function sendEmailAction(Request $request, \Swift_Mailer $mailer)
     {
-        $message = (new \Swift_Message('Dear sir/madam,'))
-            ->setFrom('sarvar.nishonboyev')
-            ->setTo($email)
-            ->setBody('
-            !')
-        ;
 
-        $mailer->send($message);
+        $message = (new \Swift_Message('Dear sir/madam,'))
+            ->setFrom($request->get('from'))
+            ->setTo($request->get('to'))
+            ->setSubject($request->get('subject'))
+            ->setBody($request->get('body'));
+//        'You have created a new apartment record successfully, please follow this link to modify your record:
+
+        if($mailer->send($message)){
+            return new View(
+                [
+                    'message'=>'Email sent',
+                    'status'=>Response::HTTP_OK
+                ]
+            );
+        }
+        return new View(['message'=>'Email sent','status'=>Response::HTTP_BAD_REQUEST]);
     }
 }
