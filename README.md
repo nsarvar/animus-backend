@@ -12,11 +12,11 @@ This is a backend application which provides RestAPI to return list of Apartment
 - RESTful API
 
 ## Used third-party libraries
-- FOSRestBundle - a tool to help the job of creating a REST API with Symfony
-- NelmioCorsBundle - allows to send Cross-Origin Resource Sharing headers with ACL-style per-URL configuration.
-- DunglasAngularCsrfBundle - This API Platform and Symfony bundle provides Cross Site Request Forgery (CSRF or XSRF) protection for client-side applications using token generated on sever
-- NelmioApiDocBundle
-- DoctrineMigrationsBundle
+- *FOSRestBundle* - a tool to help the job of creating a REST API with Symfony
+- *NelmioCorsBundle* - allows to send Cross-Origin Resource Sharing headers with ACL-style per-URL configuration.
+- *DunglasAngularCsrfBundle* - This API Platform and Symfony bundle provides Cross Site Request Forgery (CSRF or XSRF) protection for client-side applications using token generated on sever
+- *NelmioApiDocBundle* - allows you to generate a decent documentation for APIs
+- *DoctrineMigrationsBundle* -  offers the ability to programmatically deploy new versions of your database schema in a safe, easy and standardized way.
 
 ## Installation
 This installation works under Linux OS (Tested on Ubuntu 17). 
