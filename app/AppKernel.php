@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Nelmio\CorsBundle\NelmioCorsBundle(),
             new Dunglas\AngularCsrfBundle\DunglasAngularCsrfBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
 
             new AppBundle\AppBundle(),
         ];
