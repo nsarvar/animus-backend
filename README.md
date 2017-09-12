@@ -13,6 +13,8 @@ Backend application for Animus
 # Installation
 This installation works under Linux OS (Tested on Ubuntu 17). 
 
+Run install.sh shell file using `./install.shell` command. 
+
 # API
 
 http://localhost:8000/apartments/web
