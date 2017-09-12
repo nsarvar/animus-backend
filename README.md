@@ -13,6 +13,8 @@ Backend application for Animus
 # Installation
 This installation works under Linux OS (Tested on Ubuntu 17). 
 
+# API
+
 http://localhost:8000/apartments/web
 
 http://localhost:8000/apartments/api
