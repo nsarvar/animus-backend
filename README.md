@@ -17,6 +17,7 @@ Run `make` command to install the project.
 It installs all the dependencies, set the necessary permission to the required directories and run the migration. 
 
 `./start` - run the project
+
 `./stop` - stop the running of the project
 
 After Installation, you can access to the main page using: http://localhost:8000
